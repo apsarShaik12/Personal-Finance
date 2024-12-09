@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Management</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       /* Resetting default styles */
+/* Resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6fa; /* Lighter background for a soft feel */
+    color: #333;
+    line-height: 1.6;
+    background-image: url(finance\ pic.jpeg); /* Add your image path */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Header styles */
+header {
+    background: linear-gradient(90deg, #ff5e62, #ff9966, #ffcc33, #66ff66, #33ccff, #9966ff); /* Rainbow gradient */
+    color: black;
+    padding: 1.5em 1em;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adds depth to the header */
+}
+
+nav a {
+    color:red;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: blue; /* Yellow hover for a vibrant effect */
+}
+
+/* Container styling for sections */
+section {
+    padding: 2em;
+    margin: 1.5em auto;
+    width: 85%;
+    max-width: 600px;
+    background: rgba(242, 230, 241, 0.655);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(238, 27, 27, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(226, 16, 16, 0.15);
+}
+
+h2 {
+    font-size: 1.6em;
+    margin-bottom: 1em;
+    background: linear-gradient(90deg, #ff5e62, #ff9966, #ffcc33, #66ff66, #33ccff, #9966ff); /* Rainbow gradient for headings */
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Dashboard summary styling */
+#summary p {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}
+
+#summary p span {
+    color: #ff6347; /* Tomato red for emphasis */
+}
+
+/* Form styling for adding transactions */
+#transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+}
+
+#transaction-form label {
+    font-weight: bold;
+    color: #666;
+}
+
+#transaction-form input, 
+#transaction-form select {
+    padding: 0.5em;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+#transaction-form input:focus, 
+#transaction-form select:focus {
+    border-color: #ff6347; /* Red focus effect */
+    outline: none;
+}
+
+#transaction-form button {
+    background: linear-gradient(90deg, #ff5e62, #ff9966, #ffcc33, #66ff66, #33ccff, #9966ff); /* Rainbow gradient button */
+    color: #fff;
+    padding: 0.75em;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#transaction-form button:hover {
+    background: linear-gradient(90deg, #ff6347, #ff5e62, #ff9966, #66ff66, #33ccff, #9966ff); /* Subtle change on hover */
+    transform: scale(1.02);
+}
+
+#transaction-history {
+    list-style: none;
+    margin-top: 1.5em;
+    padding: 0;
+}
+
+#transaction-history li {
+    padding: 0.75em;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#transaction-history li:nth-child(odd) {
+    background: #f4f6f8;
+}
+
+#transaction-history li span {
+    font-weight: bold;
+    color: #ff6347; /* Tomato red for transaction labels */
+}
+
+/* Budget section styling */
+#budget p {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 1em;
+}
+
+#budget p span {
+    color: #ff6347; /* Tomato red for emphasis */
+}
+
+/* Interactive hover effects for links */
+a {
+    color: #ff6347; /* Tomato red links for consistency */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffeb3b; /* Bright yellow on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    body {
+        font-size: 0.9em;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    section {
+        width: 95%;
+        padding: 1.5em;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Personal Finance Management</h1>
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#transactions">Transactions</a>
+            <a href="#budget">Budget</a>
+        </nav>
+    </header>
+
+    <section id="dashboard">
+        <h2>Dashboard</h2>
+        <div id="summary">
+            <p>Total Income: $<span id="total-income">0</span></p>
+            <p>Total Expenses: $<span id="total-expenses">0</span></p>
+            <p>Remaining Balance: $<span id="remaining-balance">0</span></p>
+        </div>
+    </section>
+
+    <section id="transactions">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+            <label for="type">Type:</label>
+            <select id="type" required>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" required>
+            <label for="category">Category:</label>
+            <input type="text" id="category" required>
+            <button type="submit">Add Transaction</button>
+        </form>
+        <h3>Transaction History</h3>
+        <ul id="transaction-history"></ul>
+    </section>
+
+    <section id="budget">
+        <h2>Budget Overview</h2>
+        <p>Monthly Budget: $<span id="monthly-budget">10000</span></p>
+        <p>Remaining Budget: $<span id="remaining-budget">10000</span></p>
+    </section>
+
+</body>
+<script>
+let totalIncome = 0;
+let totalExpenses = 0;
+let monthlyBudget = 10000;
+let remainingBudget = monthlyBudget;
+
+document.getElementById('transaction-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const type = document.getElementById('type').value;
+    const amount = parseFloat(document.getElementById('amount').value);
+    const category = document.getElementById('category').value;
+
+    addTransaction(type, amount, category);
+    updateDashboard();
+    updateBudget();
+
+    document.getElementById('transaction-form').reset();
+});
+
+function addTransaction(type, amount, category) {
+    const transactionHistory = document.getElementById('transaction-history');
+    const transactionItem = document.createElement('li');
+    transactionItem.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)}: $${amount} (${category})`;
+
+    transactionHistory.appendChild(transactionItem);
+
+    if (type === 'income') {
+        totalIncome += amount;
+        remainingBudget += amount;
+    } else {
+        totalExpenses += amount;
+        remainingBudget -= amount;
+    }
+}
+
+function updateDashboard() {
+    document.getElementById('total-income').textContent = totalIncome.toFixed(2);
+    document.getElementById('total-expenses').textContent = totalExpenses.toFixed(2);
+    document.getElementById('remaining-balance').textContent = (totalIncome - totalExpenses).toFixed(2);
+}
+
+function updateBudget() {
+    document.getElementById('remaining-budget').textContent = remainingBudget.toFixed(2);
+}
+</script>
+</html>
